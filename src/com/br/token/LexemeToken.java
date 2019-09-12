@@ -28,6 +28,6 @@ public class LexemeToken {
 
     @Override
     public String toString() {
-        return "Token: " + getOperatorToken() + "\n" + "Lexeme: " + getLexeme();
+        return "\n\tToken: " + getOperatorToken() + "\n\t" + "Lexeme: " + getLexeme() + "\n";
     }
 }

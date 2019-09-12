@@ -6,7 +6,7 @@ import com.br.util.FunctionUtil;
 public class MainApplication {
 
     public static void main(String[] args) {
-        String program = "1";
+        String program = "x = x";
         AnalyzerLexicon analyzerLexicon = new AnalyzerLexicon(program);
 
         analyzerLexicon.analyze();
