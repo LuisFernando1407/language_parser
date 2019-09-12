@@ -1,4 +1,4 @@
-# language_parser
+# Language Parser
 ### TODO
 
 - Terminar o analisador léxico
