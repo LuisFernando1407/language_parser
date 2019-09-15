@@ -2,14 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1980d71c-a594-41a7-b68a-2ee66406bd95" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/br/util/Action.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/br/util/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/language_parser/com/br/MainApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/language_parser/com/br/MainApplication.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/language_parser/com/br/lexicon/AnalyzerLexicon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/language_parser/com/br/lexicon/AnalyzerLexicon.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/language_parser/com/br/token/LexemeToken.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/language_parser/com/br/token/LexemeToken.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/language_parser/com/br/token/OperatorToken.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/language_parser/com/br/token/OperatorToken.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/br/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/br/MainApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/br/lexicon/AnalyzerLexicon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/br/lexicon/AnalyzerLexicon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/br/token/LexemeToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/br/token/LexemeToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/br/token/OperatorToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/br/token/OperatorToken.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +85,13 @@
       <option name="presentableId" value="Default" />
       <updated>1568284538546</updated>
       <workItem from="1568284542239" duration="3752000" />
-      <workItem from="1568329534925" duration="1034000" />
+      <workItem from="1568329534925" duration="1136000" />
+      <workItem from="1568372621367" duration="4967000" />
+      <workItem from="1568555617386" duration="5820000" />
+      <workItem from="1568561500478" duration="23000" />
+      <workItem from="1568561550188" duration="312000" />
+      <workItem from="1568561881424" duration="114000" />
+      <workItem from="1568562007075" duration="458000" />
     </task>
     <servers />
   </component>

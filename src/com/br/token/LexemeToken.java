@@ -1,5 +1,7 @@
 package com.br.token;
 
+import com.br.util.FunctionUtil;
+
 public class LexemeToken {
 
     private OperatorToken operatorToken;
@@ -28,6 +30,14 @@ public class LexemeToken {
 
     @Override
     public String toString() {
-        return "\n\tToken: " + getOperatorToken() + "\n\t" + "Lexeme: " + getLexeme() + "\n";
+
+        String value;
+
+        value = getOperatorToken().getValue().contains("float") ||
+                getOperatorToken().getValue().contains("Integer")?
+                "Value: " + getLexeme() + "\n" :
+                "Lexeme: " + getLexeme() + "\n";
+
+        return "\n\tToken: " + getOperatorToken() + "\n\t" + value;
     }
 }

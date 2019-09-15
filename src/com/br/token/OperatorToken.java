@@ -1,6 +1,6 @@
 package com.br.token;
 
-public enum OperatorToken {
+public enum  OperatorToken {
 
     SUM("+"),
     MULTIPLICATION("*"),
@@ -12,7 +12,7 @@ public enum OperatorToken {
 
     IDENTIFIER("id"),
 
-    CONSTANT_INTEGER("int"),
+    CONSTANT_INTEGER("Integer"),
     CONSTANT_FLOAT("float");
 
     private String value;
