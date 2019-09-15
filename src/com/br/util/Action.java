@@ -1,6 +1,7 @@
 package com.br.util;
 
 import com.br.lexicon.AnalyzerLexicon;
+import com.br.token.LexemeToken;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

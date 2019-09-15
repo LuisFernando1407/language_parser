@@ -2,8 +2,6 @@ package com.br.lexicon;
 
 import com.br.token.LexemeToken;
 import com.br.token.OperatorToken;
-import com.br.util.FunctionUtil;
-import sun.tools.jstat.Token;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,31 +9,19 @@ import java.util.List;
 public class AnalyzerLexicon {
     private List<LexemeToken> lexemeTokens;
     private String program;
-    private StringBuilder messageErrors;
     private char[] programArray;
     private int i;
 
     public AnalyzerLexicon(String program){
         this.program = program;
         this.lexemeTokens = new ArrayList<>();
-        this.messageErrors = new StringBuilder();
     }
 
-    /* Método de execução [ANALISADOR] */
-    public void analyze(){
-        if(program == null) return;
+    /* Método de execução que retorna os lexemas [ANALISADOR] */
+    public List<LexemeToken> analyze(){
+        if(program == null) return null;
 
         programArray = program.toCharArray();
-
-        if(!Character.isLetter(programArray[0])){
-            messageErrors.append("* Identificado obrigatório").append("\n");
-            return;
-        }
-
-        if(!isSemicolon(programArray[programArray.length-1])){
-            messageErrors.append("* Ponto e virgula(;) ao final do programa é obrigatório").append("\n");
-            return;
-        }
 
         for(i = 0; i < programArray.length; i++){
             if(!isIdentifier(programArray[i]))
@@ -43,10 +29,11 @@ public class AnalyzerLexicon {
             if(!isInteger(programArray[i]))
             if(!Character.isWhitespace(programArray[i])){
                 lexemeTokens.add(new LexemeToken(OperatorToken.ERROR,
-                        OperatorToken.ERROR.getValue() + programArray[i]));
-                return;
+                        String.valueOf(programArray[i])));
+                return null;
             }
         }
+        return lexemeTokens;
     }
 
     /* Identifica se existe um ID no começo do programa */
@@ -95,9 +82,10 @@ public class AnalyzerLexicon {
             }else{
                 if(sequence.toString().length() > 2){
                     lexemeTokens.add(new LexemeToken(OperatorToken.ERROR,
-                            OperatorToken.ERROR.getValue() + sequence.toString()));
+                            sequence.toString()));
                 }
             }
+
             return true;
         }else if(character == OperatorToken.SUM.getValue().charAt(0)){
             lexemeTokens.add(new LexemeToken(OperatorToken.SUM,  OperatorToken.SUM.getValue()));
@@ -160,6 +148,6 @@ public class AnalyzerLexicon {
     @Override
     public String toString() {
         if(lexemeTokens.size() > 0) return lexemeTokens.toString().replace(",", "");
-        return messageErrors.toString();
+        return null;
     }
 }
