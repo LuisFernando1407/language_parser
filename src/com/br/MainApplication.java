@@ -10,16 +10,7 @@ import java.awt.*;
 public class MainApplication {
 
     public static void main(String[] args) {
-        /*
-        String program = "j1 / 1 ;";
-        AnalyzerLexicon analyzerLexicon = new AnalyzerLexicon(program);
-
-        analyzerLexicon.analyze();
-
-        FunctionUtil.print(analyzerLexicon.toString());
-         */
-
-        String projectName = "PW1 LIP - Luís Fernando & Léticia Farias";
+        String projectName = "PW1 LIP - Luís Fernando & Letícia Farias";
         String[] buttonsName = {
                 "ANALYZER LEXICON",
                 "ANALYZER SYNTACTIC",

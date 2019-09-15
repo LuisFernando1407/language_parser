@@ -11,22 +11,29 @@ import java.util.List;
 public class AnalyzerLexicon {
     private List<LexemeToken> lexemeTokens;
     private String program;
+    private StringBuilder messageErrors;
     private char[] programArray;
     private int i;
 
     public AnalyzerLexicon(String program){
         this.program = program;
         this.lexemeTokens = new ArrayList<>();
+        this.messageErrors = new StringBuilder();
     }
 
-
+    /* Método de execução [ANALISADOR] */
     public void analyze(){
-        if(program == null) FunctionUtil.print("Nenhuma cadeia de caracters apresentado");
+        if(program == null) return;
 
         programArray = program.toCharArray();
 
         if(!Character.isLetter(programArray[0])){
-            FunctionUtil.print("Identificado obrigatório");
+            messageErrors.append("* Identificado obrigatório").append("\n");
+            return;
+        }
+
+        if(!isSemicolon(programArray[programArray.length-1])){
+            messageErrors.append("* Ponto e virgula(;) ao final do programa é obrigatório").append("\n");
             return;
         }
 
@@ -34,14 +41,15 @@ public class AnalyzerLexicon {
             if(!isIdentifier(programArray[i]))
             if(!isOperator(programArray[i]))
             if(!isInteger(programArray[i]))
-            if(!isSemicolon(programArray[i]))
             if(!Character.isWhitespace(programArray[i])){
-                FunctionUtil.print("Cadeia não reconhecida");
+                lexemeTokens.add(new LexemeToken(OperatorToken.ERROR,
+                        OperatorToken.ERROR.getValue() + programArray[i]));
                 return;
             }
         }
     }
 
+    /* Identifica se existe um ID no começo do programa */
     private boolean isIdentifier(char character){
         if(Character.isLetter(character)){
             StringBuilder identifier = new StringBuilder();
@@ -67,13 +75,29 @@ public class AnalyzerLexicon {
         return false;
     }
 
+    /* Identifica se existe um operador válido (Lista de operadores em OperatorToken) */
     private boolean isOperator(char character) {
 
         if (character == OperatorToken.ASSIGNMENT.getValue().charAt(0)) {
             lexemeTokens.add(new LexemeToken(OperatorToken.ASSIGNMENT,  OperatorToken.ASSIGNMENT.getValue()));
             return true;
         }else if(character == OperatorToken.MULTIPLICATION.getValue().charAt(0)){
-            lexemeTokens.add(new LexemeToken(OperatorToken.MULTIPLICATION,  OperatorToken.MULTIPLICATION.getValue()));
+            StringBuilder sequence = new StringBuilder();
+            do {
+                sequence.append(programArray[i]).append("");
+                i += 1;
+            } while (i != programArray.length &&
+                    programArray[i] == OperatorToken.MULTIPLICATION.getValue().charAt(0)
+            );
+
+            if(!isPow(sequence.toString()) && sequence.toString().length() == 1){
+                lexemeTokens.add(new LexemeToken(OperatorToken.MULTIPLICATION,  OperatorToken.MULTIPLICATION.getValue()));
+            }else{
+                if(sequence.toString().length() > 2){
+                    lexemeTokens.add(new LexemeToken(OperatorToken.ERROR,
+                            OperatorToken.ERROR.getValue() + sequence.toString()));
+                }
+            }
             return true;
         }else if(character == OperatorToken.SUM.getValue().charAt(0)){
             lexemeTokens.add(new LexemeToken(OperatorToken.SUM,  OperatorToken.SUM.getValue()));
@@ -88,6 +112,7 @@ public class AnalyzerLexicon {
         return false;
     }
 
+    /* Verifica se é um inteiro e ao final testa se é um ponto flutuante */
     private boolean isInteger(char character){
         if (Character.isDigit(character)) {
             StringBuilder digit = new StringBuilder();
@@ -105,6 +130,7 @@ public class AnalyzerLexicon {
         return false;
     }
 
+    /* Verifica se contém um ponto(.) em um cadeia de digitos */
     private boolean isFloat(String digits){
         if(digits.contains(".")){
             lexemeTokens.add(new LexemeToken(OperatorToken.CONSTANT_FLOAT, digits));
@@ -113,6 +139,16 @@ public class AnalyzerLexicon {
         return false;
     }
 
+    /* Verifica se contém um Math pow (ELEVADO) [**] em um sequência de caracteres */
+    private boolean isPow(String sequence){
+        if(sequence.toString().length() == 2){
+            lexemeTokens.add(new LexemeToken(OperatorToken.SQUARED, sequence));
+            return true;
+        }
+        return false;
+    }
+
+    /* Verifica se contém um ponto e virgula(;) */
     private boolean isSemicolon(char character){
         if(character == OperatorToken.SEMICOLON.getValue().charAt(0)){
             lexemeTokens.add(new LexemeToken(OperatorToken.SEMICOLON, OperatorToken.SEMICOLON.getValue()));
@@ -123,6 +159,7 @@ public class AnalyzerLexicon {
 
     @Override
     public String toString() {
-        return lexemeTokens.toString().replace(",", "");
+        if(lexemeTokens.size() > 0) return lexemeTokens.toString().replace(",", "");
+        return messageErrors.toString();
     }
 }

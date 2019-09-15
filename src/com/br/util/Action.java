@@ -1,5 +1,7 @@
 package com.br.util;
 
+import com.br.lexicon.AnalyzerLexicon;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -22,7 +24,13 @@ public class Action {
 
         /* Action button "Analyzer Lexicon" */
         actionListeners.add(e -> {
-            inputProgram();
+            String program = inputProgram();
+
+            if(program != null && !program.equals("")) {
+                AnalyzerLexicon analyzerLexicon = new AnalyzerLexicon(program);
+                analyzerLexicon.analyze();
+                showMessage(analyzerLexicon.toString());
+            }
         });
 
         /* Action button "Analyzer Syntactic" */
@@ -61,17 +69,17 @@ public class Action {
 
     }
 
-    private void inputProgram(){
-        JOptionPane.showInputDialog(null, "TESTE", null);
+    private String inputProgram(){
+        return JOptionPane.showInputDialog(null, "Enter the program", "Analyzer Lexicon", JOptionPane.INFORMATION_MESSAGE);
     }
-    
+
     private void showMessage(String message){
 
         JTextArea textArea = new JTextArea(5, 10);
         textArea.setText(message);
         textArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(textArea);
-        scrollPane.setPreferredSize(new Dimension(400, 400));
+        scrollPane.setPreferredSize(new Dimension(350, 260));
 
         JOptionPane.showOptionDialog(
                 null,

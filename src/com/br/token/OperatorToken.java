@@ -13,7 +13,9 @@ public enum  OperatorToken {
     IDENTIFIER("id"),
 
     CONSTANT_INTEGER("Integer"),
-    CONSTANT_FLOAT("float");
+    CONSTANT_FLOAT("float"),
+
+    ERROR("Cadeia não reconhecida: ");
 
     private String value;
 
