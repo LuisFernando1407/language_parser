@@ -1,8 +1,7 @@
 # Language Parser
 ### TODO
 
-- Terminar o analisador léxico
-  - Testar as funcionalidades
-- Iniciar o analisador de sintaxe
+- Concluído o analisador léxico
+- Iniciado o analisador sintático
 - Criar três programas
   - Verificar se os três programas são programas completos ou um trecho que pertença a linguagem
