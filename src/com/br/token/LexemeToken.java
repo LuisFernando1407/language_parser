@@ -35,7 +35,7 @@ public class LexemeToken {
 
         value = getOperatorToken().getValue().contains("float") || getOperatorToken().getValue().contains("Integer") ?
                      "Value: " + getLexeme() + "\n" :
-                getOperatorToken().getValue().contains("Cadeia") ?
+                getOperatorToken().getValue().contains("Error") ?
                         "Error: " + getLexeme() + "\n" :
                 "Lexeme: " + getLexeme() + "\n";
 

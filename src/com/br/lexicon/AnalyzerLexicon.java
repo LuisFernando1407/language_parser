@@ -26,7 +26,9 @@ public class AnalyzerLexicon {
         for(i = 0; i < programArray.length; i++){
             if(!isIdentifier(programArray[i]))
             if(!isOperator(programArray[i]))
+            if(!isParenthesis(programArray[i]))
             if(!isInteger(programArray[i]))
+            if(!isSemicolon(programArray[i]))
             if(!Character.isWhitespace(programArray[i])){
                 lexemeTokens.add(new LexemeToken(OperatorToken.ERROR,
                         String.valueOf(programArray[i])));
@@ -95,6 +97,18 @@ public class AnalyzerLexicon {
             return true;
         }else if(character == OperatorToken.DIVISION.getValue().charAt(0)){
             lexemeTokens.add(new LexemeToken(OperatorToken.DIVISION,  OperatorToken.DIVISION.getValue()));
+            return true;
+        }
+        return false;
+    }
+
+    /* Verificar se tem parêntese */
+    private boolean isParenthesis(char character){
+        if(character == OperatorToken.LEFT_PARENTHESIS.getValue().charAt(0)){
+            lexemeTokens.add(new LexemeToken(OperatorToken.LEFT_PARENTHESIS,  OperatorToken.LEFT_PARENTHESIS.getValue()));
+            return true;
+        }else if(character == OperatorToken.RIGHT_PARENTHESIS.getValue().charAt(0)){
+            lexemeTokens.add(new LexemeToken(OperatorToken.RIGHT_PARENTHESIS,  OperatorToken.RIGHT_PARENTHESIS.getValue()));
             return true;
         }
         return false;

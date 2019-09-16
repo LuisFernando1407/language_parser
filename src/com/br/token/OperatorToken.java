@@ -10,12 +10,17 @@ public enum  OperatorToken {
     ASSIGNMENT("="),
     SEMICOLON(";"),
 
+    RIGHT_PARENTHESIS(")"),
+    LEFT_PARENTHESIS("("),
+
     IDENTIFIER("id"),
 
     CONSTANT_INTEGER("Integer"),
     CONSTANT_FLOAT("float"),
 
-    ERROR("Cadeia não reconhecida: ");
+    FINISH("fim"),
+
+    ERROR("Error");
 
     private String value;
 

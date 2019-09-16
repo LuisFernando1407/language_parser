@@ -1,6 +1,7 @@
 package com.br.util;
 
 import com.br.lexicon.AnalyzerLexicon;
+import com.br.syntactic.AnalyzerSyntactic;
 import com.br.token.LexemeToken;
 
 import javax.swing.*;
@@ -36,7 +37,13 @@ public class Action {
 
         /* Action button "Analyzer Syntactic" */
         actionListeners.add(e -> {
-            showMessage(e.getActionCommand());
+            String program = inputProgram();
+
+            if(program != null && !program.equals("")){
+                AnalyzerSyntactic analyzerSyntactic = new AnalyzerSyntactic(program);
+                analyzerSyntactic.analyze();
+                showMessage(analyzerSyntactic.toString());
+            }
         });
 
         return actionListeners;
