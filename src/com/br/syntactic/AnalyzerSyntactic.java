@@ -3,7 +3,6 @@ package com.br.syntactic;
 import com.br.lexicon.AnalyzerLexicon;
 import com.br.token.LexemeToken;
 import com.br.token.OperatorToken;
-import com.br.util.FunctionUtil;
 
 import java.util.List;
 
@@ -23,10 +22,6 @@ public class AnalyzerSyntactic {
     public void analyze(){
         if(lexemeTokens != null){
             assignment();
-            /* TODO: Está dando erro: verificar factor e ponto e virgula */
-            if(index != lexemeTokens.size()){
-                messages.append("* Erro no analisador sintático").append("\n");
-            }
         }else{
             messages.append("* Erro no analisador léxico").append("\n");
         }
@@ -38,8 +33,18 @@ public class AnalyzerSyntactic {
             if(nextToken().getOperatorToken() == OperatorToken.ASSIGNMENT){
                 lexeme();
                 expression();
-            }else if(nextToken().getOperatorToken() == OperatorToken.SEMICOLON){
+            }else{
+                messages.append("* Erro no analisador sintático!\nO programa deve conter uma atribuição após o identificador").append("\n\n");
+            }
+
+            if(nextToken().getOperatorToken() == OperatorToken.SEMICOLON){
                 assignment();
+            }else{
+                messages.append("* Erro no analisador sintático!\nO programa deve terminar com ponto e virgula (;)").append("\n\n");
+            }
+        }else{
+            if(lexemeTokens.size() == 1){
+                messages.append("* Erro no analisador sintático!\nO programa deve começar com um identificador").append("\n\n");
             }
         }
     }
@@ -74,6 +79,7 @@ public class AnalyzerSyntactic {
     private void factor(){
         exp();
         if(nextToken().getOperatorToken() == OperatorToken.SQUARED){
+            lexeme();
             exp();
         }
     }
@@ -92,10 +98,10 @@ public class AnalyzerSyntactic {
             if(nextToken().getOperatorToken() == OperatorToken.RIGHT_PARENTHESIS){
                 lexeme();
             }else{
-                messages.append("* Parênteses a direita esperado").append("\n");
+                messages.append("*Erro no analisador sintático!\nParênteses a direita esperado").append("\n\n");
             }
         }else{
-            messages.append("* Erro: identificador, contante inteira, constante flutuante, parênteses esquerdo esperados").append("\n");
+            messages.append("* Erro no analisador sintático!\nidentificador, contante inteira, constante flutuante, parênteses esquerdo esperados").append("\n\n");
         }
     }
 
@@ -106,6 +112,8 @@ public class AnalyzerSyntactic {
 
     @Override
     public String toString() {
-        return messages.toString();
+        return messages.length() == 0 ?
+                "@_@ Programa processado com sucesso!\n\n" + lexemeTokens.toString().replace(",", "") :
+                messages.toString().replace(",", "");
     }
 }
