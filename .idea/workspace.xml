@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1980d71c-a594-41a7-b68a-2ee66406bd95" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/language_parser/com/br/syntactic/AnalyzerSyntactic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/language_parser/com/br/syntactic/AnalyzerSyntactic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/br/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/br/MainApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/br/syntactic/AnalyzerSyntactic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/br/syntactic/AnalyzerSyntactic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/br/util/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/br/util/Menu.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +86,8 @@
       <workItem from="1568582501413" duration="198000" />
       <workItem from="1568651777728" duration="4591000" />
       <workItem from="1568664532842" duration="2000" />
-      <workItem from="1568681984849" duration="2831000" />
+      <workItem from="1568681984849" duration="2988000" />
+      <workItem from="1569929123163" duration="294000" />
     </task>
     <servers />
   </component>

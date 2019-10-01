@@ -98,7 +98,7 @@ public class AnalyzerSyntactic {
             if(nextToken().getOperatorToken() == OperatorToken.RIGHT_PARENTHESIS){
                 lexeme();
             }else{
-                messages.append("*Erro no analisador sintático!\nParênteses a direita esperado").append("\n\n");
+                messages.append("* Erro no analisador sintático!\nParênteses a direita esperado").append("\n\n");
             }
         }else{
             messages.append("* Erro no analisador sintático!\nidentificador, contante inteira, constante flutuante, parênteses esquerdo esperados").append("\n\n");
