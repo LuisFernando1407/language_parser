@@ -2,7 +2,9 @@ package com.br.lexicon;
 
 import com.br.token.LexemeToken;
 import com.br.token.OperatorToken;
+import com.br.util.FunctionUtil;
 
+import javax.rmi.CORBA.Util;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -123,21 +125,26 @@ public class AnalyzerLexicon {
                 i += 1;
             } while (i != programArray.length && (Character.isDigit(programArray[i]) || programArray[i] == '.'));
 
-            if(!isFloat(digit.toString())){
-                lexemeTokens.add(new LexemeToken(OperatorToken.CONSTANT_INTEGER, digit.toString()));
-            }
+            int occurrencesPoint = digit.toString().length() - digit.toString().replace(".", "").length();
 
-            return true;
+            if(occurrencesPoint == 0){
+                lexemeTokens.add(new LexemeToken(OperatorToken.CONSTANT_INTEGER, digit.toString()));
+                return true;
+            }else{
+                return !isFloat(digit.toString(), occurrencesPoint);
+            }
         }
         return false;
     }
 
     /* Verifica se contém um ponto(.) em um cadeia de digitos */
-    private boolean isFloat(String digits){
-        if(digits.contains(".")){
+    private boolean isFloat(String digits, int amountPoints){
+        if(amountPoints == 1){
             lexemeTokens.add(new LexemeToken(OperatorToken.CONSTANT_FLOAT, digits));
             return true;
         }
+        lexemeTokens.add(new LexemeToken(OperatorToken.ERROR,
+                digits.toString()));
         return false;
     }
 
@@ -147,6 +154,7 @@ public class AnalyzerLexicon {
             lexemeTokens.add(new LexemeToken(OperatorToken.SQUARED, sequence));
             return true;
         }
+
         return false;
     }
 

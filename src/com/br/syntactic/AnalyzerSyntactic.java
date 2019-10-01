@@ -40,7 +40,8 @@ public class AnalyzerSyntactic {
             if(nextToken().getOperatorToken() == OperatorToken.SEMICOLON){
                 assignment();
             }else{
-                messages.append("* Erro no analisador sintático!\nO programa deve terminar com ponto e virgula (;)").append("\n\n");
+                if(nextToken().getOperatorToken() != OperatorToken.ERROR)
+                    messages.append("* Erro no analisador sintático!\nO programa deve terminar com ponto e virgula (;)").append("\n\n");
             }
         }else{
             if(lexemeTokens.size() == 1){
